@@ -2,15 +2,24 @@
 var speed = 50;
 
 function setSpeed(newSpeed){
+    noLoop();
     speed = 100 - newSpeed;
-    console.log(newSpeed);
+    speed = Math.ceil(speed / 10) * 10
+    console.log(speed);
+    redraw();
+    loop();
 }
 
 var waves = 10;
 
 function setWaves(newWaves){
-    waves = newWaves;
-    console.log(waves);
+
+    noLoop();
+        waves = newWaves / 2;
+        waves = Math.ceil(waves / 10) * 10;
+        console.log(waves);
+        redraw();
+    loop()
 }
 
 var shape = 10;
@@ -19,11 +28,12 @@ function setShape(newShape){
     noLoop();
 
     setTimeout(function(){
-        shape = newShape;
-        console.log(newShape);
-        loop();
+        shape = 100 - newShape;
+        shape = Math.ceil(shape / 10) * 10;
+        console.log(shape);
+        redraw();
     }, 2000);
-
+loop()
     
 }
 //p5.js setup and draw
@@ -48,10 +58,11 @@ function draw() {
         
         stroke(r, g, b);
         
-        rotate(frameCount / speed);//speed input not working?
+        console.log('speed: ' + speed)
+        rotate(frameCount / speed);//multiples of ten
         
         beginShape();
-        for(var j = 0; j<360; j+=10){//get shape to work
+        for(var j = 0; j<360; j+=shape){//multiples of ten
             var rad = i * 3;
             var x = rad * cos(j);
             var y = rad * sin(j);

@@ -59,7 +59,7 @@ function draw() {
         stroke(r, g, b);
         
         console.log('speed: ' + speed)
-        rotate(frameCount / speed);//multiples of ten
+        rotate(frameCount / speed);//1-50
         
         beginShape();
         console.log("shape: "+ shape);
